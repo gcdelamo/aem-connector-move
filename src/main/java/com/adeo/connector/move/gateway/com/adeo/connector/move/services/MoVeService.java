@@ -21,7 +21,7 @@ public abstract class MoVeService {
 
     protected final Gson gson = new Gson();
 
-    protected <T> T convertJson(byte[] data, Class<T> modelClass) {
+    protected <T> T mapJsonToObject(byte[] data, Class<T> modelClass) {
         Reader jsonReader = new InputStreamReader(new ByteArrayInputStream(data));
         return gson.fromJson(jsonReader, modelClass);
     }

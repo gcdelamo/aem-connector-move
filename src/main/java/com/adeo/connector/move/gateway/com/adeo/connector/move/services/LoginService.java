@@ -53,7 +53,7 @@ public class LoginService extends MoVeService {
 
     @Override
     public ConnectorResponse makeResponse(HttpResponse httpResponse, MoveRequest moveRequest) {
-        OauthSessionTokenInfo sessionTokenInfo = convertJson(httpResponse.getData(), OauthSessionTokenInfo.class);
+        OauthSessionTokenInfo sessionTokenInfo = mapJsonToObject(httpResponse.getData(), OauthSessionTokenInfo.class);
         MoveResponse<OauthSessionTokenInfo> response = new MoveResponse<>(Collections.singletonList(sessionTokenInfo));
         return response;
     }

@@ -1,6 +1,7 @@
 package com.adeo.connector.move.gateway;
 
 import com.adeo.connector.move.LoginRequest;
+import com.adeo.connector.move.SearchUserMail;
 import com.adeo.connector.move.gateway.com.adeo.connector.move.services.MoVeService;
 import com.adobe.connector.ConnectorResponse;
 import com.adobe.connector.gateways.Gateway;
@@ -95,6 +96,7 @@ public class MoveGateway extends Gateway {
 
     private void initServices() {
         registerService(LoginRequest.class, "LoginService");
+        registerService(SearchUserMail.class, "SearchUserService");
     }
 
     protected void registerService(Class request, String serviceName) {
