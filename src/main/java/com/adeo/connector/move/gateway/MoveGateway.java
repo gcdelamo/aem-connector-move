@@ -15,7 +15,6 @@ import org.apache.sling.commons.osgi.PropertiesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -112,39 +111,27 @@ public class MoveGateway extends Gateway {
         return endpointConnector;
     }
 
-    protected String buildUrl(boolean authentication, String path, String[] parameters) {
-        String url;
-        if (authentication) {
-            url = new StringBuilder().append(this.moveScheme).append("://").append(this.moveOauthDomain).append(this.moveOauthContext).append(path).toString();
-        } else {
-            url = new StringBuilder().append(this.moveScheme).append("://").append(this.moveDomain).append(this.moveContext).append(path).toString();
-        }
-        if (parameters.length > 0) {
-            MessageFormat messageFormat = new MessageFormat(url);
-            url = messageFormat.format(parameters);
-        }
-        return url;
-    }
-
     @Override
     protected Message getMessage(GatewayRequest gatewayRequest) {
         MoveRequest request = (MoveRequest) gatewayRequest.getConnectorRequest();
         MoVeService service = getService(request.getClass());
 
+
         Map<String, String> headers = new HashMap<>();
-        headers.put("Content-Type", "application/json");
-        headers.put("Accept", "application/json");
-        if (service.getHeaders(this) != null) {
-            headers.putAll(service.getHeaders(this));
-        }
-        if (request.getHeaders() != null) {
-            headers.putAll(request.getHeaders());
+        if (service.getHeaders(this, request) != null) {
+            headers.putAll(service.getHeaders(this, request));
         }
 
-        HttpMessage message = new HttpMessage(service.getUrl());
+        HttpMessage message;
+        if (service.getBody(request) != null) {
+            message = new HttpMessage(service.getUrl(this, request.getParameters()), service.getBody(request));
+        } else if (service.getFormParameters(this, request) != null && service.getFormParameters(this, request).size() > 0) {
+            message = new HttpMessage(service.getUrl(this, request.getParameters()), service.getFormParameters(this, request));
+        } else {
+            message = new HttpMessage(service.getUrl(this, request.getParameters()));
+        }
+
         message.setHeaders(headers);
-        message.setMethod(service.getHttpMethod());
-        message.setBody(request.getBody());
 
         return message;
     }
@@ -165,5 +152,25 @@ public class MoveGateway extends Gateway {
 
     public String getMoveOauthClientSecret() {
         return moveOauthClientSecret;
+    }
+
+    public String getMoveScheme() {
+        return moveScheme;
+    }
+
+    public String getMoveDomain() {
+        return moveDomain;
+    }
+
+    public String getMoveOauthDomain() {
+        return moveOauthDomain;
+    }
+
+    public String getMoveOauthContext() {
+        return moveOauthContext;
+    }
+
+    public String getMoveContext() {
+        return moveContext;
     }
 }
