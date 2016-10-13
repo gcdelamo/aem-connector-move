@@ -6,6 +6,8 @@ import com.adeo.connector.move.gateway.MoveRequest;
 import com.adeo.connector.move.gateway.MoveResponse;
 import com.adobe.connector.ConnectorResponse;
 import com.adobe.connector.gateways.connection.http.HttpResponse;
+import org.apache.felix.scr.annotations.Component;
+import org.apache.felix.scr.annotations.Service;
 
 import java.util.Collections;
 import java.util.Map;
@@ -13,6 +15,8 @@ import java.util.Map;
 /**
  * Created by stievena on 13/10/16.
  */
+@Component(immediate = true)
+@Service(value = MoVeService.class)
 public class SearchUserService extends MoVeService {
     @Override
     public String getName() {

@@ -36,14 +36,12 @@ public class MoveGateway extends Gateway {
     protected void bindService(final MoVeService service, final Map<String, Object> properties) {
         if (service != null) {
             this.services.put(service.getName(), service);
-            initServices();
         }
     }
 
     protected void unbindService(final MoVeService service, final Map<String, Object> properties) {
         if (service != null) {
             this.services.remove(service.getName());
-            initServices();
         }
     }
 

@@ -10,9 +10,9 @@
           <property key="Import-Package" value="android.util;resolution:=optional,org.apache.tapestry5.json;resolution:=optional,com.fasterxml.jackson.*;resolution:=optional,*" />
           <property key="Export-Package" value="com.adeo.connector.opus.*" />
           <property key="Bundle-Name" value="MOVE Connector Implementation" />
-          <property key="Bundle-ClassPath" value=".,commons-beanutils-1.9.2.jar,json-path-2.2.0.jar,json-smart-2.2.1.jar,asm-5.0.3.jar,asm-1.0.2.jar,asm-3.3.1.jar" />
-          <property key="Include-Resource" value="commons-beanutils-1.9.2.jar=$MAVEN_REPOSITORY$/commons-beanutils/commons-beanutils/1.9.2/commons-beanutils-1.9.2.jar,json-path-2.2.0.jar=$MAVEN_REPOSITORY$/com/jayway/jsonpath/json-path/2.2.0/json-path-2.2.0.jar,json-smart-2.2.1.jar=$MAVEN_REPOSITORY$/net/minidev/json-smart/2.2.1/json-smart-2.2.1.jar,asm-5.0.3.jar=$MAVEN_REPOSITORY$/org/ow2/asm/asm/5.0.3/asm-5.0.3.jar,asm-1.0.2.jar=$MAVEN_REPOSITORY$/net/minidev/asm/1.0.2/asm-1.0.2.jar,asm-3.3.1.jar=$MAVEN_REPOSITORY$/asm/asm/3.3.1/asm-3.3.1.jar" />
-          <property key="Embedded-Artifacts" value="commons-beanutils-1.9.2.jar;g=&quot;commons-beanutils&quot;;a=&quot;commons-beanutils&quot;;v=&quot;1.9.2&quot;,json-path-2.2.0.jar;g=&quot;com.jayway.jsonpath&quot;;a=&quot;json-path&quot;;v=&quot;2.2.0&quot;,json-smart-2.2.1.jar;g=&quot;net.minidev&quot;;a=&quot;json-smart&quot;;v=&quot;2.2.1&quot;,asm-5.0.3.jar;g=&quot;org.ow2.asm&quot;;a=&quot;asm&quot;;v=&quot;5.0.3&quot;,asm-1.0.2.jar;g=&quot;net.minidev&quot;;a=&quot;asm&quot;;v=&quot;1.0.2&quot;,asm-3.3.1.jar;g=&quot;asm&quot;;a=&quot;asm&quot;;v=&quot;3.3.1&quot;" />
+          <property key="Bundle-ClassPath" value=".,commons-beanutils-1.9.2.jar,asm-1.0.2.jar,asm-3.3.1.jar" />
+          <property key="Include-Resource" value="commons-beanutils-1.9.2.jar=$MAVEN_REPOSITORY$/commons-beanutils/commons-beanutils/1.9.2/commons-beanutils-1.9.2.jar,asm-1.0.2.jar=$MAVEN_REPOSITORY$/net/minidev/asm/1.0.2/asm-1.0.2.jar,asm-3.3.1.jar=$MAVEN_REPOSITORY$/asm/asm/3.3.1/asm-3.3.1.jar" />
+          <property key="Embedded-Artifacts" value="commons-beanutils-1.9.2.jar;g=&quot;commons-beanutils&quot;;a=&quot;commons-beanutils&quot;;v=&quot;1.9.2&quot;,asm-1.0.2.jar;g=&quot;net.minidev&quot;;a=&quot;asm&quot;;v=&quot;1.0.2&quot;,asm-3.3.1.jar;g=&quot;asm&quot;;a=&quot;asm&quot;;v=&quot;3.3.1&quot;" />
         </additionalProperties>
         <additionalJARContents />
       </configuration>
@@ -90,9 +90,5 @@
     <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.9.0" level="project" />
     <orderEntry type="library" name="Maven: net.minidev:asm:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: asm:asm:3.3.1" level="project" />
-    <orderEntry type="library" name="Maven: com.jayway.jsonpath:json-path:2.2.0" level="project" />
-    <orderEntry type="library" name="Maven: net.minidev:json-smart:2.2.1" level="project" />
-    <orderEntry type="library" name="Maven: net.minidev:accessors-smart:1.1" level="project" />
-    <orderEntry type="library" name="Maven: org.ow2.asm:asm:5.0.3" level="project" />
   </component>
 </module>
