@@ -344,7 +344,7 @@ public class CustomerAccount {
     }
 
     /**
-     * @param addresses List<Address> the addresses to set
+     * @param addresses the addresses to set
      */
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
