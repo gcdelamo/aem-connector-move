@@ -26,13 +26,13 @@ public class Newsletter {
      * <p>
      * The corresponding values given to the subscription service are:
      * <p>
-     * PHONENUMBER => 1
+     * PHONENUMBER: 1
      * <p>
-     * FAXNUMBER => 2
+     * FAXNUMBER: 2
      * <p>
-     * EMAIL  => 3
+     * EMAIL: 3
      * <p>
-     * ADDRESS => 4
+     * ADDRESS: 4
      */
     private String communicationType;
     /**
@@ -81,13 +81,13 @@ public class Newsletter {
      * <p>
      * The corresponding values given to the subscription service are:
      * <p>
-     * PHONENUMBER => 1
+     * PHONENUMBER: 1
      * <p>
-     * FAXNUMBER => 2
+     * FAXNUMBER: 2
      * <p>
-     * EMAIL  => 3
+     * EMAIL: 3
      * <p>
-     * ADDRESS => 4
+     * ADDRESS: 4
      */
     public String getCommunicationType() {
         return communicationType;
@@ -98,13 +98,13 @@ public class Newsletter {
      *                          <p>
      *                          The corresponding values given to the subscription service are:
      *                          <p>
-     *                          PHONENUMBER => 1
+     *                          PHONENUMBER: 1
      *                          <p>
-     *                          FAXNUMBER => 2
+     *                          FAXNUMBER: 2
      *                          <p>
-     *                          EMAIL  => 3
+     *                          EMAIL: 3
      *                          <p>
-     *                          ADDRESS => 4
+     *                          ADDRESS: 4
      */
     public void setCommunicationType(String communicationType) {
         this.communicationType = communicationType;
