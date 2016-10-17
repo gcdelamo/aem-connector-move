@@ -29,7 +29,7 @@ public class SearchUserService extends MoVeService {
 
     @Override
     public List makeResponse(HttpResponse httpResponse, MoveRequest moveRequest) {
-        CustomerAccount account = mapJsonToObject(httpResponse.getData(), CustomerAccount.class);
+        CustomerAccount account = fromJson(httpResponse.getData(), CustomerAccount.class);
         return Collections.singletonList(account);
     }
 

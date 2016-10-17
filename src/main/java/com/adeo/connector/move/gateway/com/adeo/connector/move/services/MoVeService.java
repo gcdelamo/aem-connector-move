@@ -21,9 +21,13 @@ public abstract class MoVeService {
 
     protected final Gson gson = new Gson();
 
-    protected <T> T mapJsonToObject(byte[] data, Class<T> modelClass) {
+    protected <T> T fromJson(byte[] data, Class<T> modelClass) {
         Reader jsonReader = new InputStreamReader(new ByteArrayInputStream(data));
         return gson.fromJson(jsonReader, modelClass);
+    }
+
+    protected String toJson(Object object) {
+        return gson.toJson(object);
     }
 
     public String getUrl(MoveGateway gateway, String[] parameters) {
@@ -46,13 +50,16 @@ public abstract class MoVeService {
     }
 
     public Map<String, String> getFormParameters(MoveGateway gateway, MoveRequest moveRequest) {
-        return null;
+        Map<String, String> parameters = new HashMap<>();
+        parameters.putAll(moveRequest.getFormAttributes());
+        return parameters;
     }
 
     public Map<String, String> getHeaders(MoveGateway gateway, MoveRequest moveRequest) {
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
         headers.put("Accept", "application/json");
+        headers.putAll(moveRequest.getHeaders());
         return headers;
     }
 

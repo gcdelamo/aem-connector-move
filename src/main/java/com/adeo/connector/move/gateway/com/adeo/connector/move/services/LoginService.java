@@ -41,14 +41,14 @@ public class LoginService extends MoVeService {
     public Map<String, String> getFormParameters(MoveGateway gateway, MoveRequest moveRequest) {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("grant_type", "password");
-        parameters.put("username", moveRequest.getAttribute("username"));
-        parameters.put("password", moveRequest.getAttribute("password"));
+        parameters.put("username", moveRequest.getFormAttribute("username"));
+        parameters.put("password", moveRequest.getFormAttribute("password"));
         return parameters;
     }
 
     @Override
     public List makeResponse(HttpResponse httpResponse, MoveRequest moveRequest) {
-        OauthSessionTokenInfo sessionTokenInfo = mapJsonToObject(httpResponse.getData(), OauthSessionTokenInfo.class);
+        OauthSessionTokenInfo sessionTokenInfo = fromJson(httpResponse.getData(), OauthSessionTokenInfo.class);
         return Collections.singletonList(sessionTokenInfo);
     }
 
