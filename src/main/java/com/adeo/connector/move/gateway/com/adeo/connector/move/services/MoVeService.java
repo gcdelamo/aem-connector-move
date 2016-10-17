@@ -2,9 +2,8 @@ package com.adeo.connector.move.gateway.com.adeo.connector.move.services;
 
 import com.adeo.connector.move.gateway.MoveGateway;
 import com.adeo.connector.move.gateway.MoveRequest;
-import com.adobe.connector.ConnectorResponse;
-import com.adobe.connector.gateways.connection.http.HttpResponse;
-import com.adobe.connector.gateways.message.HttpMessage;
+import com.adobe.connector.gateway.connection.http.HttpResponse;
+import com.adobe.connector.gateway.message.HttpMessage;
 import com.google.gson.Gson;
 
 import java.io.ByteArrayInputStream;
@@ -12,6 +11,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.text.MessageFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,10 +39,10 @@ public abstract class MoVeService {
 
     public abstract String getPath();
 
-    public abstract ConnectorResponse makeResponse(HttpResponse httpResponse, MoveRequest moveRequest);
+    public abstract List makeResponse(HttpResponse httpResponse, MoveRequest moveRequest);
 
-    public HttpMessage.POST_METHOD getHttpMethod() {
-        return HttpMessage.POST_METHOD.BODY;
+    public HttpMessage.HTTP_METHOD getHttpMethod() {
+        return HttpMessage.HTTP_METHOD.POST;
     }
 
     public Map<String, String> getFormParameters(MoveGateway gateway, MoveRequest moveRequest) {

@@ -3,13 +3,12 @@ package com.adeo.connector.move.gateway.com.adeo.connector.move.services;
 import com.adeo.connector.move.dto.CustomerAccount;
 import com.adeo.connector.move.gateway.MoveGateway;
 import com.adeo.connector.move.gateway.MoveRequest;
-import com.adeo.connector.move.gateway.MoveResponse;
-import com.adobe.connector.ConnectorResponse;
-import com.adobe.connector.gateways.connection.http.HttpResponse;
+import com.adobe.connector.gateway.connection.http.HttpResponse;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Service;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,9 +28,9 @@ public class SearchUserService extends MoVeService {
     }
 
     @Override
-    public ConnectorResponse makeResponse(HttpResponse httpResponse, MoveRequest moveRequest) {
+    public List makeResponse(HttpResponse httpResponse, MoveRequest moveRequest) {
         CustomerAccount account = mapJsonToObject(httpResponse.getData(), CustomerAccount.class);
-        return new MoveResponse(Collections.singletonList(account));
+        return Collections.singletonList(account);
     }
 
     @Override

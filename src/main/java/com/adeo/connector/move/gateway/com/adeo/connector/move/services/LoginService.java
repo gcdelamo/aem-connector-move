@@ -3,17 +3,12 @@ package com.adeo.connector.move.gateway.com.adeo.connector.move.services;
 import com.adeo.connector.move.dto.OauthSessionTokenInfo;
 import com.adeo.connector.move.gateway.MoveGateway;
 import com.adeo.connector.move.gateway.MoveRequest;
-import com.adeo.connector.move.gateway.MoveResponse;
-import com.adobe.connector.ConnectorResponse;
-import com.adobe.connector.gateways.connection.http.HttpResponse;
+import com.adobe.connector.gateway.connection.http.HttpResponse;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Service;
 
 import java.text.MessageFormat;
-import java.util.Base64;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by stievena on 12/10/16.
@@ -52,10 +47,9 @@ public class LoginService extends MoVeService {
     }
 
     @Override
-    public ConnectorResponse makeResponse(HttpResponse httpResponse, MoveRequest moveRequest) {
+    public List makeResponse(HttpResponse httpResponse, MoveRequest moveRequest) {
         OauthSessionTokenInfo sessionTokenInfo = mapJsonToObject(httpResponse.getData(), OauthSessionTokenInfo.class);
-        MoveResponse<OauthSessionTokenInfo> response = new MoveResponse<>(Collections.singletonList(sessionTokenInfo));
-        return response;
+        return Collections.singletonList(sessionTokenInfo);
     }
 
 
