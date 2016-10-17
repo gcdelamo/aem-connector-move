@@ -4,21 +4,19 @@ import com.adeo.connector.move.LoginRequest;
 import com.adeo.connector.move.SearchUserMail;
 import com.adeo.connector.move.gateway.com.adeo.connector.move.services.MoVeService;
 import com.adobe.connector.ConnectorResponse;
-import com.adobe.connector.RestResponse;
-import com.adobe.connector.gateway.Gateway;
-import com.adobe.connector.gateway.GatewayRequest;
-import com.adobe.connector.gateway.connection.EndpointConnector;
-import com.adobe.connector.gateway.connection.EndpointResponse;
-import com.adobe.connector.gateway.connection.http.HttpResponse;
-import com.adobe.connector.gateway.message.HttpMessage;
-import com.adobe.connector.gateway.message.Message;
+import com.adobe.connector.gateways.Gateway;
+import com.adobe.connector.gateways.GatewayRequest;
+import com.adobe.connector.gateways.connection.EndpointConnector;
+import com.adobe.connector.gateways.connection.EndpointResponse;
+import com.adobe.connector.gateways.connection.http.HttpResponse;
+import com.adobe.connector.gateways.message.HttpMessage;
+import com.adobe.connector.gateways.message.Message;
 import org.apache.felix.scr.annotations.*;
 import org.apache.sling.commons.osgi.PropertiesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -140,14 +138,8 @@ public class MoveGateway extends Gateway {
 
     @Override
     protected ConnectorResponse makeConnectorResponse(EndpointResponse endpointResponse, GatewayRequest gatewayRequest) {
-        HttpResponse response = (HttpResponse) endpointResponse.getResponse();
-        List responseList = null;
-        if (endpointResponse.isSuccessful()) {
-            MoVeService service = getService(gatewayRequest.getClass());
-            responseList = service.makeResponse(response, (MoveRequest) gatewayRequest.getConnectorRequest());
-        }
-        return new RestResponse(responseList, response.getStatus(), response.getMessage());
-
+        MoVeService service = getService(gatewayRequest.getClass());
+        return service.makeResponse((HttpResponse) endpointResponse.getResponse(), (MoveRequest) gatewayRequest.getConnectorRequest());
     }
 
     private MoVeService getService(Class requestClass) {
