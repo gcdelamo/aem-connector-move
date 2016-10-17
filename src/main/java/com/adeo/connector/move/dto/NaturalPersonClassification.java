@@ -37,7 +37,7 @@ public class NaturalPersonClassification {
 		return genderCode;
 	}
 	/**
-	 * @param String genderCode:
+	 * @param genderCode genderCode:
 	 * 31001 - Male
 	 * 31002 - Female
 	 */
