@@ -4,7 +4,6 @@ import com.adeo.connector.move.LoginRequest;
 import com.adeo.connector.move.SearchUserMail;
 import com.adeo.connector.move.gateway.com.adeo.connector.move.services.MoVeService;
 import com.adobe.connector.ConnectorResponse;
-import com.adobe.connector.RestResponse;
 import com.adobe.connector.gateway.Gateway;
 import com.adobe.connector.gateway.GatewayRequest;
 import com.adobe.connector.gateway.connection.EndpointConnector;
@@ -146,7 +145,7 @@ public class MoveGateway extends Gateway {
             MoVeService service = getService(gatewayRequest.getClass());
             responseList = service.makeResponse(response, (MoveRequest) gatewayRequest.getConnectorRequest());
         }
-        return new RestResponse(responseList, response.getStatus(), response.getMessage());
+        return new MoveResponse(responseList, response.getStatus(), response.getMessage());
 
     }
 
