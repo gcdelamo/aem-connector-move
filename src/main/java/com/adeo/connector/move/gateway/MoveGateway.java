@@ -125,7 +125,7 @@ public class MoveGateway extends Gateway {
 
         HttpMessage message;
         if (service.getBody(request) != null) {
-            message = new HttpMessage(service.getUrl(this, request.getParameters()), service.getBody(request));
+            message = new HttpMessage(service.getUrl(this, request.getParameters()), service.getBody(request), service.getHttpMethod());
         } else if (service.getFormParameters(this, request) != null && service.getFormParameters(this, request).size() > 0) {
             message = new HttpMessage(service.getUrl(this, request.getParameters()), service.getFormParameters(this, request));
         } else {
